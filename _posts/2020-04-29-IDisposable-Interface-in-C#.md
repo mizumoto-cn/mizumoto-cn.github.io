@@ -55,4 +55,4 @@ C#的类型分为普通类型和非普通类型，非普通类型包含普通的
 <p align="right">Mizumoto<br />
 Wuhan, Hubei, China<br />04 - 19 - 2020</p>
 
-[Back to HomePage](https://blog.mizumoto.ml)
+[Back to HomePage](https://mizumoto-cn.github.io)
