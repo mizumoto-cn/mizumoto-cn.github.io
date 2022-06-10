@@ -3,7 +3,7 @@ layout: post
 title: IDisposable Interface in C#
 subtitle: 
 cover-img: /assets/img/path.jpg
-thumbnail-img: /assets/img/archive/sundial.jpg
+thumbnail-img: ""
 share-img: /assets/img/path.jpg
 tags: [C#]
 ---
