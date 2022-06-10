@@ -7,7 +7,7 @@ thumbnail-img: /assets/img/thumb.png
 share-img: /assets/img/path.jpg
 tags: [books]
 ---
-## "Flectere si nequeo superos, Acheronta movebo."
+<!-- ## "Flectere si nequeo superos, Acheronta movebo." -->
 
 > "Flectere si nequeo superos, Acheronta movebo."
 
