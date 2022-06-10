@@ -1,16 +1,18 @@
 ---
 layout: page
 title: About me
-subtitle: Why you'd want to go on a date with me
+subtitle: Why? Because I am crazy!
 ---
 
-My name is Inigo Montoya. I have the following qualities:
+Hello there, this is Ruiyuan. Feel free to call me any name you like. I've been using different nicknames on the internet, like *Ruiyuan "Mizumoto" Xu*, Or *Buta* .
 
-- I rock a great mustache
-- I'm extremely loyal to my family
+### Wubba
 
-What else do you need?
+I am not the kind of person, who can give out a straightforward answer, when asked the question, "how will you describe yourself". A Golang developer maybe.
 
-### My story
+But frankly speaking, I'm a rather new developer to the Golang world. Before that, I've been using C++ for the most of my time, back in my University, Renmin University of China. I was also a C# fan at that time.
 
-To be honest, I'm having some trouble remembering right now, so why don't you just watch [my movie](https://en.wikipedia.org/wiki/The_Princess_Bride_%28film%29) and it will answer **all** your questions.
+I love *"the United Union of C Plus Plus"* for its **mightiness** as well as I love *C#* for its **elegance**.
+
+### Lubba
+
