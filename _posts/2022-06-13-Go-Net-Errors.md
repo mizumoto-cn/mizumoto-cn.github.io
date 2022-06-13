@@ -1,0 +1,100 @@
+---
+layout: post
+title: Errors, Go Net Errors
+subtitle: 
+cover-img: /assets/img/path.jpg
+thumbnail-img: ""
+share-img: /assets/img/path.jpg
+tags: [Go]
+---
+
+## Go net errors
+
+The `net` library in Go is a fascinating artifact. It makes web programming kind of easy using the `Dial()``Read()``Write()``Close()` functions.
+
+But the internet is always full of exceptions. And you will to face all sorts of problems from TCP connection error to unable to resolve target IP address.
+
+In Go there are always code like
+
+```Golang
+if err != nil {
+    // return err
+}
+```
+
+And I do think "if err != nil {"-oriented-programming is somewhat a elegant way dealing with errors.
+
+As long as you just want to know the type of the error, without knowing more contexts, this one fits just OK.
+
+### Be careful when using Errorf()
+
+<!-- cSpell:ignore Errorf Sprintf -->
+
+Code like
+
+```Golang
+if err != nil && err.Error() == "invalid param" {
+```
+is not elegant, and somewhat annoying. You cant determine whether the string magic value will change in other logic parts.
+
+Then you may try defining the error into a variable, like:
+
+```Golang
+var(
+    ErrInvalidAddr = errors.New("Invalid Address")
+)
+```
+
+And the code above may look like:
+
+```Golang
+if err != nil && err.Error() {
+```
+
+You can even use switch case if there are more options.
+
+But that is still far from perfect. If you put more stack info or context into the error object like using `Errorf()`, the error object cannot use == operator to assert its type anymore. For example:
+
+```Golang
+if err!=nil {
+    return fmt.Errorf("more about: %+v", err)
+}
+if err != nil && err == ErrInvalidAddr{
+    // codes never hit
+}
+```
+
+Finally, there is `errors.Is()`.
+
+```Golang
+if errors.Is( err, ErrInvalidAddr){
+```
+
+### More exceptional error
+
+error is in fact an interface:
+
+```Golang
+type error interface {
+    Error() string
+}
+```
+
+And you can define your own error type like this:
+
+```Golang
+type ErrInvalidAddr struct{
+    AddrName string
+    AddrValue string
+}
+
+func (e *ErrInvalidAddr) Error() string{
+    return fmt.Sprintf(...)
+}
+```
+
+Then you can use type assertion / type selection
+
+`e, ok := err.(*ErrInvalidParam)`
+
+//To be continued 
