@@ -143,7 +143,7 @@ func main() {
 >
 > Below is a slight rework of the previous example. Notice the new type DivisionError, which implements the Error interface. We can make use of errors.As to check and convert from a standard error to our more specific DivisionError.
 
-``` Golang
+```golang
 package main
 
 import (
