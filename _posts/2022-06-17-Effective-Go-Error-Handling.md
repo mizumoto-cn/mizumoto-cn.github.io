@@ -68,7 +68,7 @@ func Divide(a, b int) (int, error) {
 
 > Note that fmt.Errorf will prove extremely useful when used to wrap another error with the %w format verb - but I’ll get into more detail on that further down in the article.
 
-同样，fmt包可以用来给错误添加动态数据，比如一个int、字符串或其他错误。例如上面的代码。Errorf在用%(w)格式包装其它错误的时候非常有用，但是他也有着自己的问题，这将在文章后面详细说明。
+同样，`fmt`包可以用来给错误添加动态数据，比如一个`int`、字符串或其他错误。例如上面的代码。`Errorf`在用`%(w)`格式包装其它错误的时候非常有用，但是他也有着自己的问题，这将在文章后面详细说明。
 
 > There are a few other important things to note in the example above.
 >
@@ -82,9 +82,9 @@ func Divide(a, b int) (int, error) {
 
 在上面的例子中，还有一些重要的事情需要注意。
 
-错误可以以nil的形式返回，事实上，nil是Go中错误的默认值，或者说 "零"。这一点很重要，因为检查err != nil是确定是否遇到错误的惯用方法（取代你在其他编程语言中可能熟悉的try/catch语句）。
+错误可以以`nil`的形式返回，事实上，`nil`是Go中错误的默认值，或者说 "零"。这一点很重要，因为检查`err != nil`是确定是否遇到错误的惯用方法（取代你在其他编程语言中可能熟悉的`try/catch`语句）。
 
-错误通常作为函数的最后一个参数返回。例如在我们上面的例子中，我们依次返回一个int和一个错误。
+错误通常作为函数的最后一个参数返回。例如在我们上面的例子中，我们依次返回一个`int`和一个错误。
 
 当我们返回一个错误时，函数返回的其他参数通常会返回其默认的 空值。一个函数如果返回一个非零的错误，那么返回的其他参数就没有意义了。
 
@@ -133,6 +133,7 @@ func main() {
     fmt.Printf("%d / %d = %d\n", a, b, result)
 }
 ```
+
 在前面的Divide函数的基础上，我们可以通过预先定义一个 "哨兵 "错误来改善错误信号。调用函数可以使用`errors.Is()`来明确地检查这个错误。
 
 #### Defining Custom Error Types || 定义自定义错误类型
@@ -327,7 +328,7 @@ Go 1.13增加了一个简单的方法来添加这些信息。
 
 > The snippet below is refactored so that is uses fmt.Errorf with a %w verb to “wrap” errors as they “bubble up” through the other function calls. This adds the context needed so that it’s possible to deduce which of those database operations failed in the previous example.
 
-下面的代码段经过重构，使用带有%w动词的fmt.Errorf来 "包裹 "错误，因为它们通过其他函数调用 "冒泡"。这增加了所需的上下文，从而有可能推断出在前面的例子中哪些数据库操作失败。
+下面的代码段经过重构，使用带有`%w`修饰词的`fmt.Errorf`来 "包裹 "错误，因为它们通过其他函数调用 "冒泡"。这增加了所需的上下文，从而有可能推断出在前面的例子中哪些数据库操作失败。
 
 ```golang
 package main
@@ -379,4 +380,75 @@ func main() {
 }
 ```
 
-TBC...
+> If we re-run the program and encounter the same error, the log should print the following:
+
+如果我们重新运行程序并遇到相同的错误，log将会被如下打印：
+
+```golang
+failed finding or updating user: FindAndSetUserAge: SetUserAge: failed executing db update: malformed request
+```
+
+> Now our message contains enough information that we can see the problem originated in the `db.SetUserAge` function. Phew! That definitely saved us some time debugging!
+>
+> If used correctly, error wrapping can provide additional context about the lineage of an error, in ways similar to a traditional stack-trace.
+>
+> Wrapping also preserves the original error, which means `errors.Is` and `errors.As` continue to work, regardless of how many times an error has been wrapped. We can also call errors.Unwrap to return the previous error in the chain.
+>
+> > Curious to learn how error wrapping works under the hood? Take a peek at the internals of fmt.Errorf, the %w verb, and the errors API.
+
+现在我们的错误消息包含了足够的信息：我们可以看到问题起源于`db.SetUserAge`函数。咻！这无疑为我们节省了调试的时间。
+
+如果使用得当，封装过的错误可以提供更多关于错误脉络的上下文信息，其方式类似于传统的堆栈跟踪。
+
+封装同时还保留了原始的错误，这意味着`errors.Is`和`errors.As`能继续忠实地执行自己的职责，不管一个错误被封装了多少次。我们还可以调用errors.Unwrap来返回链中的前一个错误。
+
+> > 你是否好奇地想知道错误是如何被包装的？看看[`fmt.Errorf`](https://github.com/golang/go/blob/release-branch.go1.17/src/fmt/errors.go#L26)、[`%w`](https://github.com/golang/go/blob/release-branch.go1.17/src/fmt/print.go#L574)和[`errors` API](https://github.com/golang/go/blob/release-branch.go1.17/src/errors/wrap.go)的内部情况。
+
+#### When To Wrap || 何时包装
+
+> Generally, it’s a good idea to wrap an error with at least the function’s name, every time you “bubble it up” - i.e. every time you receive the error from a function and want to continue returning it back up the function chain.
+
+一般来说，在错误发生的时候就去把它包装起来是很好的一个想法。如果你从函数中收到一个错误的返回，你又想继续向上抛出这个错误的时候，用函数名去包装它是一个好主意。
+
+> There are some exceptions to the rule, however, where wrapping an error may not be appropriate.
+>
+> Since wrapping the error always preserves the original error messages, sometimes exposing those underlying issues might be a security, privacy, or even UX concern. In such situations, it could be worth handling the error and returning a new one, rather than wrapping it. This could be the case if you’re writing an open-source library or a REST API where you don’t want the underlying error message to be returned to the 3rd-party user.
+
+然而，也有一些例外情况，包装错误可能不合适。
+
+由于包装错误总是会保留原始的错误信息，暴露这些信息可能是一威胁到个安全、隐私、甚至用户体验的问题。在这种情况下，可能需要在逻辑中处理这些错误，并返回一个新的错误对象，而不是简单地包装它并向上抛出。如果你正在编写一个开源库或Restful API，不希望将底层错误信息返回给第三方用户，就可能是这种情况。
+
+> While you’re here:
+>
+> [Earthly](https://earthly.dev/) is the effortless CI/CD framework.
+Develop CI/CD pipelines locally and run them anywhere!
+
+当你遇到这种情况：
+
+[Earthly](https://earthly.dev/)是一个便捷的CI/CD（持续开发/持续交付）框架。
+你可以在本地开发CI/CD管道，并且将它们部署到任何地方。
+
+### Conclusion || 总结
+
+> That’s a wrap! In summary, here’s the gist of what was covered here:
+>
+> - Errors in Go are just lightweight pieces of data that implement the `Error interface`
+> - Predefined errors will improve signaling, allowing us to check which error occurred
+> - Wrap errors to add enough context to trace through function calls (similar to a stack trace)
+>
+> I hope you found this guide to effective error handling useful. If you’d like to learn more, I’ve attached some related articles I found interesting during my own journey to robust error handling in Go.
+
+这就是包装错误了。 这里来一点总结：
+
+- Go中的错误只是实现了`Error`接口的轻量级数据结构。
+- 预定义错误能改善信号传递，使我们能够检查发生了什么错误。
+- 包裹错误以增加足够的上下文来跟踪函数调用（类似于堆栈跟踪）。
+
+我希望你觉得这个有效的错误处理指南有用。如果你想了解更多，你可以看一下下面的相关文档。
+
+[Error handling and Go](https://go.dev/blog/error-handling-and-go)
+[Go 1.13 Errors](https://go.dev/blog/go1.13-errors)
+[Go Error Doc](https://pkg.go.dev/errors@go1.17.5)
+[Go By Example: Errors](https://gobyexample.com/errors)
+
+> 说实话，翻译完之后反而觉得纯纯是在说废话了，浪费我一天时间。
