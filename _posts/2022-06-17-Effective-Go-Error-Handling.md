@@ -325,4 +325,58 @@ Go 1.13增加了一个简单的方法来添加这些信息。
 
 #### Errors Are Better Wrapped || 错误们被更好地包装起来
 
+> The snippet below is refactored so that is uses fmt.Errorf with a %w verb to “wrap” errors as they “bubble up” through the other function calls. This adds the context needed so that it’s possible to deduce which of those database operations failed in the previous example.
+
 下面的代码段经过重构，使用带有%w动词的fmt.Errorf来 "包裹 "错误，因为它们通过其他函数调用 "冒泡"。这增加了所需的上下文，从而有可能推断出在前面的例子中哪些数据库操作失败。
+
+```Golang
+package main
+
+import (
+    "errors"
+    "fmt"
+
+    "example.com/fake/users/db"
+)
+
+func FindUser(username string) (*db.User, error) {
+    u, err := db.Find(username)
+    if err != nil {
+        return nil, fmt.Errorf("FindUser: failed executing db query: %w", err)
+    }
+    return u, nil
+}
+
+func SetUserAge(u *db.User, age int) error {
+    if err := db.SetAge(u, age); err != nil {
+      return fmt.Errorf("SetUserAge: failed executing db update: %w", err)
+    }
+}
+
+func FindAndSetUserAge(username string, age int) error {
+  var user *User
+  var err error
+
+  user, err = FindUser(username)
+  if err != nil {
+      return fmt.Errorf("FindAndSetUserAge: %w", err)
+  }
+
+  if err = SetUserAge(user, age); err != nil {
+      return fmt.Errorf("FindAndSetUserAge: %w", err)
+  }
+
+  return nil
+}
+
+func main() {
+    if err := FindAndSetUserAge("bob@example.com", 21); err != nil {
+        fmt.Println("failed finding or updating user: %s", err)
+        return
+    }
+
+    fmt.Println("successfully updated user's age")
+}
+```
+
+TBC...
