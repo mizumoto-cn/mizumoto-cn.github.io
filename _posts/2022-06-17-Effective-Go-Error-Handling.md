@@ -25,7 +25,7 @@ Go中的错误处理与其他主流编程语言，如Java、JavaScript或Python�
 
 > The error type in Go is implemented as the following interface:
 
-```Golang
+```golang
 type error interface {
     Error() string
 }
@@ -39,7 +39,7 @@ Go中的error类型是通过一个包含Error()方法的简单接口实现的。
 
 > Errors can be constructed on the fly using Go’s built-in errors or fmt packages. For example, the following function uses the errors package to return a new error with a static error message:
 
-```Golang
+```golang
 package main
 
 import "errors"
@@ -100,7 +100,7 @@ func Divide(a, b int) (int, error) {
 
 > Building on the Divide function from earlier, we can improve the error signaling by pre-defining a “Sentinel” error. Calling functions can explicitly check for this error using errors.Is:
 
-```Golang
+```golang
 package main
 
 import (
@@ -244,7 +244,7 @@ func main() {
 
 我们假设这个假数据库已经包含了一些查找和更新用户记录的函数。而且用户记录被定义为一个结构，看起来像这样：
 
-```Golang
+```golang
 package db
 
 type User struct {
@@ -261,7 +261,7 @@ func SetUserAge(user *User, age int) error { /* ... */ }
 
 这里是我们的示例代码：
 
-```Golang
+```golang
 package main
 
 import (
@@ -329,7 +329,7 @@ Go 1.13增加了一个简单的方法来添加这些信息。
 
 下面的代码段经过重构，使用带有%w动词的fmt.Errorf来 "包裹 "错误，因为它们通过其他函数调用 "冒泡"。这增加了所需的上下文，从而有可能推断出在前面的例子中哪些数据库操作失败。
 
-```Golang
+```golang
 package main
 
 import (
