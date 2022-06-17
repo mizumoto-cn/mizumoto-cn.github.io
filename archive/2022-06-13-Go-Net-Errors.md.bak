@@ -1,3 +1,4 @@
+<!--
 ---
 layout: post
 title: Errors, Go Net Errors
@@ -98,3 +99,4 @@ Then you can use type assertion / type selection
 `e, ok := err.(*ErrInvalidParam)`
 
 //To be continued 
+-->
