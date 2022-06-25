@@ -1,8 +1,7 @@
 ---
 layout: post
-title: Foreword(0) A brief overview of Micro-services
+title: Foreword-0 A brief overview of Micro-services
 subtitle: Column - Go & Micro Services
-cover-img: /assets/img/path.jpg
 thumbnail-img: ""
 share-img: /assets/img/path.jpg
 tags: [Go] [Micro-services]
