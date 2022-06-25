@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 title: Foreword(0) A brief overview of Micro-services
 tags: [Micro-services][Go]
 ---
