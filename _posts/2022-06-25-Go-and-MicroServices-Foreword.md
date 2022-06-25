@@ -4,7 +4,7 @@ title: Foreword - A brief overview of Micro-services
 subtitle: Column - Go & Micro Services
 thumbnail-img: ""
 share-img: /assets/img/path.jpg
-tags: [Go]
+tags: [Go] [Micro-services]
 ---
 
 > So, before we start, let's ask ourselves a few questions. It's ok if you cannot answer it now, but I hope that we can have a clear answer later when we finish this set of articles.
