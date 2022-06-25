@@ -19,7 +19,7 @@ So, before we start, let's ask ourselves a few questions. It's ok if you cannot 
 6. How do we split our micro-service into smaller parts?
 7. How to ensure that our micro-service is secure?
 
-## Q1. Why are there micro-services?
+### Q1. Why are there micro-services?
 
 * Back to about ten years ago, most of the internet applications were built in a way we call `monolithic architecture`, causing lots of problems.
   + Applications are too complicated and difficult for any single developer to understand.
@@ -28,7 +28,7 @@ So, before we start, let's ask ourselves a few questions. It's ok if you cannot 
 
 So smart engineers decided to separate the applications into smaller parts, according to services and functions. That is the origin of micro-services.
 
-## Q2. What is a micro-service?
+### Q2. What is a micro-service?
 
 * Let's start with the opinion "SOA"(Service-Oriented Architecture)
   + By splitting the application into services, we can make the services smaller, easy to test and maintain, and easier to deploy or extend.
@@ -39,7 +39,7 @@ So smart engineers decided to separate the applications into smaller parts, acco
 - What is a micro=service?
   + A micro-service is a small, self-contained unit of an application. **Built around one specific business functionality**. Light-weight communication protocol(s) used between the services. Allowing automatic deployment, and different programming languages or data storage methods can be used.
 
-## Q3. What are the pros and cons of micro-services?
+### Q3. What are the pros and cons of micro-services?
 
 * pros:
   - easy to develop, test, deploy, maintain, and extend.
@@ -68,7 +68,7 @@ So smart engineers decided to separate the applications into smaller parts, acco
     + If you aren't a huge company, just simply put everything onto the **cloud**.
     + Otherwise, you need to implement automation tools, log collection, monitoring, alarm, CI/CD, kubernetes, etc.
 
-## Q4. How do we build a micro-service?
+### Q4. How do we build a micro-service?
 
 > The `composition` of multiple micro-services completes a complete `usecase`.
 
@@ -76,7 +76,7 @@ So smart engineers decided to separate the applications into smaller parts, acco
 * service: business code + kit dependency + 3rd-party dependency
 * light-weight communication: rpc + message queue
 
-## Q5. How do we expose a micro-service to the outside world?
+### Q5. How do we expose a micro-service to the outside world?
 
 ![API gateway & micro-services](/assets/img/micro-service-column/APIgateway&microservices.png)
 
@@ -90,10 +90,10 @@ BFF advantages:
 - dynamic upgrades: upgrade performs smoothly with the existing system. Upgrades only affect the services, not changing the protocols.
 - improves communication efficiency. Forming a collaborative model of mobile business and gateway teams.
 
-### Traffic Link
+#### Traffic Link
 
 * Mobile/Web/... -> API gateway -> BFF -> Micro-services
 * Noted that CDNs and layer4/7 load balancers not included.
 > Nodejs SSR for pure web BFFs usually.
 
-### Why is micro-service not exposed directly to the outside world?
+#### Why is micro-service not exposed directly to the outside world?
