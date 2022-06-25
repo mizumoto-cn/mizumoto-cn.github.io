@@ -7,7 +7,6 @@ share-img: /assets/img/path.jpg
 tags: [Go] [Micro-services]
 ---
 
-<!-- markdownlint-disable MD032 MD004 -->
 
 So, before we start, let's ask ourselves a few questions. It's ok if you cannot answer it now, but I hope that we can have a clear answer later when we finish this set of articles.
 
@@ -20,6 +19,8 @@ So, before we start, let's ask ourselves a few questions. It's ok if you cannot 
 7. How to ensure that our micro-service is secure?
 
 ### Q1. Why are there micro-services?
+
+<!-- markdownlint-disable MD032 MD004 -->
 
 * Back to about ten years ago, most of the internet applications were built in a way we call `monolithic architecture`, causing lots of problems.
   + Applications are too complicated and difficult for any single developer to understand.
