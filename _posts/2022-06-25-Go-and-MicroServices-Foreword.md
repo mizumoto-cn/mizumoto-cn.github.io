@@ -2,13 +2,12 @@
 layout: post
 title: Foreword - A brief overview of Micro-services
 subtitle: Column - Go & Micro Services
-cover-img: /assets/img/path.jpg
 thumbnail-img: ""
 share-img: /assets/img/path.jpg
 tags: [Go]
 ---
 
-So, before we start, let's ask ourselves a few questions. It's ok if you cannot answer it now, but I hope that we can have a clear answer later when we finish this set of articles.
+> So, before we start, let's ask ourselves a few questions. It's ok if you cannot answer it now, but I hope that we can have a clear answer later when we finish this set of articles.
 
 1. Why are there micro-services?
 2. What is a micro-service?
