@@ -7,6 +7,8 @@ share-img: /assets/img/path.jpg
 tags: [Go, Micro-services]
 ---
 
+[Special Column: Go & Micro Services](go_index.md)
+
 > So, before we start, let's ask ourselves a few questions. It's ok if you cannot answer it now, but I hope that we can have a clear answer later when we finish this set of articles.
 
 1. Why are there micro-services?
@@ -97,3 +99,49 @@ BFF advantages:
 > Nodejs SSR for pure web BFFs usually.
 
 #### Why is micro-service not exposed directly to the outside world?
+
++ Directly exposing services will make it hard for the front-end developers. It also means poor compatibility and low communication efficiency.
++ It will also make it impossible for the backend developers to kkk or updating the services.
+
+#### Why there has to be an outmost API gateway?
+
+Making upgrading business unrelated functions, such as current limiting easy.
+
+### Q6. How do we split our micro-service into smaller parts?
+
+* When it's not quite clear what the business is all about, we can split the service according to "department functions", such as account, finance, etc..
+  - note that functions should be divided into closed loops. Don't separate the same function into different departments.
+* After the system is stabilized, we can split the services according to DDD context bounds.
+* If a user scenario can be solved in a closed loop, then it shall be a single service.
+* It can also be divided according to the frequency of the usecase.
+* It can also be divided according to the read and write access of the data.
+  - CQRS: Command Query Responsibility Separation. CQRS separates the services into two parts: command and query. Command is the service that handles the business logic, and query is the service that performs queries to the database. The command side handles creation, update and delete requests and issues events when data changes. The query side handles queries by executing queries against one or more materialized views that are kept up to date by subscribing to a stream of events issued on data changes.
+
+### Q7. How to ensure that our micro-service is secure?
+
+![micro-service security](/assets/img/micro-service-column/APIgateway&microservices.png)
+
+#### API Gateway
+
+e.g. This layer does the authentication and authentication of the user. Generate a jwt token for the intranet and pass it along with the uid.
+
+#### BFF
+
+Check the jwt token to get the uid and user info and add it into the context. e.g. metadata in rpc, header in http, etc..
+
+#### Micro-services (Intranet)
+
+* Identification:
+  + e.g. GRPC use certificate to identify the user.
+* Authorization:
+  + via RBAC (`Role-Based policies Access Control`) e.g. configuration centre issues
+
+In intranet, 
+* Full Trust: Assumes that intranet services are secure from each other and do nothing authentication.
+* Half Trust: Authentication are required between intranet services, but not all of them need to be encrypted.
+* Zero Trust: The intranet is insecure, similar to a public network, and all requests need to be encrypted after authentication to prevent sniffing.
+  + [Embrace proactive security with Zero Trust](https://www.microsoft.com/en-us/security/business/zero-trust)
+
+---
+
+> For more of this special column, click [Go & Micro-services](/go_index.md).
