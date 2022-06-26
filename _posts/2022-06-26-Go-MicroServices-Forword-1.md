@@ -24,7 +24,7 @@ What protocols shall we use between different services? How do we implement serv
   - **Services rather than objects, messages rather than references**: Coarse-grained messaging interaction design philosophy.
   - **Protocol payload independent**: Different services may use different protocols, like `JSON`/`XML`/`Thrift` and `Protocol Buffer`.
   - Streaming: streaming APIs.
-  - **Blocking and non-blocking**: supoport both blocking synchronous and asynchronous message sequences between clients and servers.
+  - **Blocking and non-blocking**: support both blocking synchronous and asynchronous message sequences between clients and servers.
   - **Metadata exchange**: common cross-cutting concerns, such as authentication or tracking, rely on data exchange.
   - **Standardized status codes**: clients respond to errors returned by the APIs in a limited way.
 * **Why shouldn't simply use `restful`**?
