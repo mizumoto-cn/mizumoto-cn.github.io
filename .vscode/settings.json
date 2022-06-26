@@ -5,6 +5,8 @@
         "gomemcache",
         "httputil",
         "memchached",
+        "Pluggable",
+        "proto",
         "Schurman",
         "usecase",
         "xiaomi's"
