@@ -23,10 +23,10 @@ tags: [Go, Micro-services]
 
 <!-- markdownlint-disable MD032 MD004 -->
 
-* Back to about ten years ago, most of the internet applications were built in a way we call `monolithic architecture`, causing lots of problems.
-  + Applications are too complicated and difficult for any single developer to understand.
+* Back about ten years ago, most of the internet applications were built in a way we call `monolithic architecture`, causing lots of problems.
+  + Applications are too complicated for any single developer to understand.
   + Applications are not modular and difficult to make expandable. Reliability is also not guaranteed in some way.
-  + Too heavy to agile development and deployment.
+  + Too heavy for agile development and deployment.
 
 So smart engineers decided to separate the applications into smaller parts, according to services and functions. That is the origin of micro-services.
 
@@ -34,10 +34,10 @@ So smart engineers decided to separate the applications into smaller parts, acco
 
 * Let's start with the opinion "SOA"(Service-Oriented Architecture)
   + By splitting the application into services, we can make the services smaller, easy to test and maintain, and easier to deploy or extend.
-  + **Atomic**. Single responsibility principle. A service should only do one thing.
+  + **Atomic**. Single responsibility principle. One service should only do one thing.
   + **Prototype first principle**. We should start with a prototype, defining the APIs as soon as possible.
   + **Portability is more important than efficiency**. It's rather important to have a portable interaction protocol(s) between the services.
-- Micro-services can be considered as a practice of the SOA. Micro-serves are also service oriented architectures.
+- Micro-services can be considered a practice of the SOA. Micro-serves are also service-oriented architectures.
 - What is a micro=service?
   + A micro-service is a small, self-contained unit of an application. **Built around one specific business functionality**. Light-weight communication protocol(s) used between the services. Allowing automatic deployment, and different programming languages or data storage methods can be used.
 
@@ -45,9 +45,9 @@ So smart engineers decided to separate the applications into smaller parts, acco
 
 * pros:
   - easy to develop, test, deploy, maintain, and extend.
-  - **atomic**. Single responsibility principle. A service should only do one thing and it shall not be split into other services.
-  - **independent**. Each service is an independent process, and shall stay stateless. Making it easy to get combined with containerization, fits `kubernetes` well.
-  - **isolated development**. Development of each service should be independent, avoiding mutual influences between services. Also making it possible to allocate different resources to each service according to its needs.
+  - **atomic**. Single responsibility principle. One service should only do one thing and it shall not be split into other services.
+  - **independent**. Each service is an independent process and shall stay stateless. Making it easy to get combined with containerization, fits `Kubernetes` well.
+  - **isolated development**. The development of each service should be independent, avoiding mutual influences between services. Also making it possible to allocate different resources to each service according to its needs.
   - **Decentralized Governance**. Each service is independent and can be deployed anywhere.
     + **Data decentralization**. Each service can store its data in its own database, cache and other facilities. Of course, it can also communicate with other services or share a common database.
     + **Governance decentralization**. Each service can be managed by its own team.
@@ -55,26 +55,26 @@ So smart engineers decided to separate the applications into smaller parts, acco
 * cons:
   - **complex dependencies between services**. There might be hundreds of services, and each service needs to communicate with other services.
     + can be solved by using full link tracking tools like `OpenTracing`.
-  - **Micro-services are born to be distributed**. So rpc or other message queue protocols(like kafka) are necessary. **Making it necessary to write code to deal with local failures** like `slow delivery` or `unreachable services`.
+  - **Micro-services are born to be distributed**. So RPC or other message queue protocols(like Kafka) are necessary. **Making it necessary to write code to deal with local failures** like `slow delivery` or `unreachable services`.
     + e.g Service call traffic can be amplified easily, especially when there is a `for` call. If service A calls service B in a `for` loop, for like 10 times, then B calls C in a loop for ten times, there will be a 100 times traffic to C.
-    + **common solutions** : coarse-grained(粗粒度的) inter-process communication (batch interface, batch requests, avoiding n+1 problem), and other facilities like isolation, timeout protection, load protection,  circuit breaker, current limiting, downgrading, retry, load balancing, and so on.
+    + **common solutions**: Coarse-grained(粗粒度的) inter-process communication (batch interface, batch requests, avoiding n+1 problem), and other facilities like isolation, timeout protection, load protection,  circuit breaker, current limiting, downgrading, retry, load balancing, and so on.
   - **Distributed transaction problems**. Cross-service transaction management is not easy, as there are independent databases in most of the services.
-    + **common solutions** : TCC (try confirm cancel), two phase commit, etc.
-    + You can refer to [xiaomi's `distributed transaction`](https://xiaomi-info.github.io/2020/01/02/distributed-transaction/) for more real-world solution examples.
+    + **common solutions**: TCC (try confirm cancel), two-phase commit, etc.
+    + You can refer to [Xiaomi's `distributed transaction`](https://xiaomi-info.github.io/2020/01/02/distributed-transaction/) for more real-world solution examples.
   - **Complicated testing**. As there are too many dependencies. It's hard to tell whether it's due to abnormal behavior or simply because of the dependencies.
-    + **common solutions** : independent testing. I'll add another solution later in the coming articles.
+    + **common solutions**: Independent testing. I'll add another solution later in the coming articles.
   - Dependency between service modules may cause update problems.
-    + **Always maintain compatibility of interfaces**. Changes in services may destroy the compatibility of service contracts, causing compatibility damage to service consumers.
-    + **Be conservative when sending and be open when receiving (data)**.  Which is call the "Bostar's Law". Necessary message shall be sent with a minimal size, and when it comes to receiving, the message shall be received with the tolerance of the maximum redundant data. >>> compatibility.
+    + **Always maintain the compatibility of interfaces**. Changes in services may destroy the compatibility of service contracts, causing compatibility damage to service consumers.
+    + **Be conservative when sending and be open when receiving (data)**.  This is called the "Bostar's Law": necessary messages shall be sent with minimal size, and when it comes to receiving, the message shall be received with the tolerance of the maximum redundant data. >>> compatibility.
   - High requirements of infrastructures.
     + If you aren't a huge company, just simply put everything onto the **cloud**.
-    + Otherwise, you need to implement automation tools, log collection, monitoring, alarm, CI/CD, kubernetes, etc.
+    + Otherwise, you need to implement automation tools, log collection, monitoring, alarm, CI/CD, Kubernetes, etc.
 
 ### Q4. How do we build a micro-service?
 
 > The `composition` of multiple micro-services completes a complete `usecase`.
 
-* kit: A basic library / framework
+* kit: A basic library/framework
 * service: business code + kit dependency + 3rd-party dependency
 * light-weight communication: rpc + message queue
 
@@ -82,9 +82,9 @@ So smart engineers decided to separate the applications into smaller parts, acco
 
 ![API gateway & micro-services](/assets/img/micro-service-column/APIgateway&microservices.png)
 
-API gateway: routing, authorization, rate limiting, circuit breaker, load balancing, etc.. Basically API gateway handles horizontal functions which are not business related.
+API gateway: routing, authorization, rate limiting, circuit breaker, load balancing, etc. Basically, the API gateway handles horizontal functions which are not business-related.
 
-BFF(Backend for Frontend): This is a layer that mainly does the data assembly, and provides unified and user-friendly API interfaces to the client/web/mobile etc.. BFF can be separated into multiple parts according to the needs or importance of the APIs.
+BFF(Backend for Frontend): This is a layer that mainly does the data assembly, and provides unified and user-friendly API interfaces to the client/web/mobile etc. BFF can be separated into multiple parts according to the needs or importance of the APIs.
 
 BFF advantages:
 - light-weight interaction: streamlining and aggregation of protocols.
@@ -95,27 +95,27 @@ BFF advantages:
 #### Traffic Link
 
 * Mobile/Web/... -> API gateway -> BFF -> Micro-services
-* Noted that CDNs and layer4/7 load balancers not included.
+* Noted that CDNs and layer4/7 load balancers are not included.
 > Nodejs SSR for pure web BFFs usually.
 
 #### Why is micro-service not exposed directly to the outside world?
 
 + Directly exposing services will make it hard for the front-end developers. It also means poor compatibility and low communication efficiency.
-+ It will also make it impossible for the backend developers to kkk or updating the services.
++ It will also make it impossible for the backend developers to expand or update the services.
 
-#### Why there has to be an outmost API gateway?
+#### Why does there have to be an outmost API gateway?
 
 Making upgrading business unrelated functions, such as current limiting easy.
 
 ### Q6. How do we split our micro-service into smaller parts?
 
-* When it's not quite clear what the business is all about, we can split the service according to "department functions", such as account, finance, etc..
+* When it's not quite clear what the business is all about, we can split the service according to "department functions", such as account, finance, etc.
   - note that functions should be divided into closed loops. Don't separate the same function into different departments.
 * After the system is stabilized, we can split the services according to DDD context bounds.
-* If a user scenario can be solved in a closed loop, then it shall be a single service.
-* It can also be divided according to the frequency of the usecase.
+* If a user scenario can be solved in a closed-loop, then it shall be a single service.
+* It can also be divided according to the frequency of the use case.
 * It can also be divided according to the read and write access of the data.
-  - CQRS: Command Query Responsibility Separation. CQRS separates the services into two parts: command and query. Command is the service that handles the business logic, and query is the service that performs queries to the database. The command side handles creation, update and delete requests and issues events when data changes. The query side handles queries by executing queries against one or more materialized views that are kept up to date by subscribing to a stream of events issued on data changes.
+  - CQRS: Command Query Responsibility Separation. CQRS separates the services into two parts: command and query. "Command" is the service that handles the business logic, and "query" is the service that performs queries to the database. The command side handles creation, update and delete requests and issues events when data changes. The query side handles queries by executing queries against one or more materialized views that are kept up to date by subscribing to a stream of events issued on data changes.
 
 ### Q7. How to ensure that our micro-service is secure?
 
@@ -127,18 +127,18 @@ e.g. This layer does the authentication and authentication of the user. Generate
 
 #### BFF
 
-Check the jwt token to get the uid and user info and add it into the context. e.g. metadata in rpc, header in http, etc..
+Check the jwt token to get the uid and user info and add it into the context. e.g. metadata in RPC, header in HTTP, etc.
 
 #### Micro-services (Intranet)
 
 * Identification:
-  + e.g. GRPC use certificate to identify the user.
+  + e.g., gRPC uses certificates to identify the users.
 * Authorization:
-  + via RBAC (`Role-Based policies Access Control`) e.g. configuration centre issues
+  + via RBAC (`Role-Based policies Access Control`) e.g. configuration center issues
 
-In intranet, 
+In intranet,
 * Full Trust: Assumes that intranet services are secure from each other and do nothing authentication.
-* Half Trust: Authentication are required between intranet services, but not all of them need to be encrypted.
+* Half Trust: Authentication is required between intranet services, but not all of them need to be encrypted.
 * Zero Trust: The intranet is insecure, similar to a public network, and all requests need to be encrypted after authentication to prevent sniffing.
   + [Embrace proactive security with Zero Trust](https://www.microsoft.com/en-us/security/business/zero-trust)
 
