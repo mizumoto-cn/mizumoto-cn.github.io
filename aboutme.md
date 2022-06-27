@@ -33,3 +33,20 @@ Now I am on a journey to become a powerful Go developer. I am impressed by not o
 Hopefully I'll try to get a job as a backend engineer.
 
 Wish me good luck.
+
+### More Fun Facts
+
+My coding environment:
+    - VScode with vim plug-in
+    - HHKB Hybrid Type-s Keyboard
+    - Sony WF-1000XM4 earphone
+
+I love wearing hats.
+
+I'm a enka lover.
+
+Love ginger ale and lemon tea.
+
+Los Angeles Valiant / Chicago Bulls / Atletico de Madrid fan.
+
+Love sea urchin.
