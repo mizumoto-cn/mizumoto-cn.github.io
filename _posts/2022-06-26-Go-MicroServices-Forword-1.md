@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Foreword-1 - Service Discovery, Multi-cluster, and Multi-tenancy
+title: Foreword-1 - Service Discovery, Multi-cluster, and Multi-tenancy Part 0
 subtitle: Column - Go & Micro Services
 thumbnail-img: ""
 share-img: /assets/img/path.jpg
@@ -44,3 +44,5 @@ What protocols shall we use between different services? How do we implement serv
 > > Good authority determinations can help you to determine if a link discovery is a topological ring.
 
 ### Health Check, graceful deployment, and graceful shutdown
+
+Later we'll discuss these in Part 1.
