@@ -1,6 +1,6 @@
 ---
 type: post
-title: Elegant Error Handling in Go
+title: Side Article(0) - Elegant Error Handling in Go (Part 0)
 subtitle: Column - Go & Micro Services
 thumbnail-img: ""
 share-img: /assets/img/path.jpg
