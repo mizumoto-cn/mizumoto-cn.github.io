@@ -7,7 +7,7 @@ share-img: /assets/img/path.jpg
 tags: [Go, Micro-services]
 ---
 
-In the [previous article](2022-06-25-Go-and-MicroServices-Foreword.md), we talked about the definition of microservices, their pros and cons, how shall we expose them to the public, etc. In addition to the exposure to the public, services also need to call and interact with each other.
+In the [previous article](https://mizumoto-cn.github.io/2022-06-25-Go-and-MicroServices-Foreword/), we talked about the definition of microservices, their pros and cons, how shall we expose them to the public, etc. In addition to the exposure to the public, services also need to call and interact with each other.
 
 What protocols shall we use between different services? How do we implement service discovery, how can we ensure smooth release and restart of services, how to solve the test environment problems? These questions are all waiting to be answered.
 
