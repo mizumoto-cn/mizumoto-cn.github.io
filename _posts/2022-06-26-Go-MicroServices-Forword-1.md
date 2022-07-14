@@ -30,7 +30,7 @@ What protocols shall we use between different services? How do we implement serv
 * **Why shouldn't simply use `restful`**?
   - SDKs must be rewritten for each client, complex and error-prone.
   - Documentations required for each SDK, hard to maintain, especially during updates.
-  - Performance not so good. `Json` is not aa good a choice as `protobuf`.
+  - Performance not so good. `Json` is not as good a choice as `protobuf`.
   - Based on http 1.1, which is a single connection, not multiplexing, wasteful in intranet environments.
   - **`restful` is a loose protocol**, it has no strict standards, making different developers/teams come out with different codes, very error-prone.
 
