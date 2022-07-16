@@ -9,6 +9,8 @@ subtitle: This is where I will tell my friends way too much about me
 
 [About Me](aboutme.md)  |    [Tags](tags.html)
 
+</center>
+
 Special Column:
 
 [More Specific Go & Micro Services](go_index.md)
@@ -16,5 +18,3 @@ Special Column:
 [AWS SAA-C02 Notes](AWS_index.md)
 
 [On Java8](OnJava8-main/README.md)
-
-</center>
