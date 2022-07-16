@@ -5,6 +5,7 @@ subtitle: This is where I will tell my friends way too much about me
 ---
 
 <!-- markdownlint-disable MD033 -->
+
 <center>
 
 [About Me](aboutme.md)  |    [Tags](tags.html)
