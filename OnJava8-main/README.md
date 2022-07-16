@@ -1,4 +1,7 @@
-# 《On Java 8》中文
+---
+layout: page
+title: 《On Java 8》中文
+---
 
 ## 示例代码
 
