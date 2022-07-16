@@ -14,7 +14,7 @@ subtitle: This is where I will tell my friends way too much about me
     </thead>
     <tbody>
         <tr>
-            <td width="50%" align="center"><a href="aboutme.md"> About Me </a> </td>
+            <td width="50%" align="center"><a href="aboutme"> About Me </a> </td>
             <td width="50%" align="center"><a href="tags.html"> Tags </a> </td>
         </tr>
     </tbody>
@@ -26,12 +26,12 @@ subtitle: This is where I will tell my friends way too much about me
         </thead>
     <tbody>
         <tr>
-            <td width="50%" align="center"><a href="go_index.md"> More Specific Go & Micro Services </a> </td>
-            <td width="50%" align="center"><a href="AWS_index.md"> AWS SAA-C02 Notes </a> </td>
+            <td width="50%" align="center"><a href="go_index"> More Specific Go & Micro Services </a> </td>
+            <td width="50%" align="center"><a href="AWS_index"> AWS SAA-C02 Notes </a> </td>
         </tr>
     </tbody>
 </table>
 
 <div align="center">
-Reference Books: <a href="OnJava8-main/README.md">On Java8 (Mirror) </a>
+Reference Books: <a href="OnJava8-main/README">On Java8 (Mirror) </a>
 </div>
