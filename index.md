@@ -6,7 +6,7 @@ subtitle: This is where I will tell my friends way too much about me
 
 <!-- markdownlint-disable MD033 -->
 
-<table align="center" width="100%">
+<table align="center"width="100%">
         <thead>
             <tr>
                 <th colspan="2">Navigation</th>
@@ -14,8 +14,8 @@ subtitle: This is where I will tell my friends way too much about me
     </thead>
     <tbody>
         <tr>
-            <td><a href="aboutme.md"> About Me </a> </td>
-            <td><a href="tags.html"> Tags </a> </td>
+            <td width="50%"><a href="aboutme.md"> About Me </a> </td>
+            <td width="50%"><a href="tags.html"> Tags </a> </td>
         </tr>
     </tbody>
     <!-- Add a column-->
@@ -26,8 +26,8 @@ subtitle: This is where I will tell my friends way too much about me
         </thead>
     <tbody>
         <tr>
-            <td><a href="go_index.md"> More Specific Go & Micro Services </a> </td>
-            <td><a href="AWS_index.md"> AWS SAA-C02 Notes </a> </td>
+            <td width="50%"><a href="go_index.md"> More Specific Go & Micro Services </a> </td>
+            <td width="50%"><a href="AWS_index.md"> AWS SAA-C02 Notes </a> </td>
         </tr>
     </tbody>
 </table>
