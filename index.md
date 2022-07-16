@@ -9,7 +9,7 @@ subtitle: This is where I will tell my friends way too much about me
 <table align="center" width="100%">
         <thead>
             <tr>
-                <th colspan="2">Navigation</th>
+                <th colspan="2" align="center">Navigation</th>
             </tr>
     </thead>
     <tbody>
@@ -21,7 +21,7 @@ subtitle: This is where I will tell my friends way too much about me
     <!-- Add a column-->
     <thead>
             <tr>
-                <th colspan="2">Special Column</th>
+                <th colspan="2" align="center">Special Column</th>
             </tr>
         </thead>
     <tbody>
