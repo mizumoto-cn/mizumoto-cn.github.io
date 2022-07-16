@@ -1,0 +1,15 @@
+.xyhot {
+    width: 100%;
+    display: flex;
+    margin-top: 15px;
+    margin-right: -15px;
+    padding-right: 5px;
+    white-space: nowrap; 
+    overflow-x: auto; 
+    transform: translateZ(0);
+    overflow-y: hidden; 
+}
+
+.xyhot::-webkit-scrollbar {
+    display: none !important;
+}

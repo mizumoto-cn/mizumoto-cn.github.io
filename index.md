@@ -6,19 +6,32 @@ subtitle: This is where I will tell my friends way too much about me
 
 <!-- markdownlint-disable MD033 -->
 
-<center>
+<table align="center" width="100%">
+        <thead>
+            <tr>
+                <th colspan="2">Navigation</th>
+            </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><a href="aboutme.md"> About Me </a> </td>
+            <td><a href="tags.html"> Tags </a> </td>
+        </tr>
+    </tbody>
+    <!-- Add a column-->
+    <thead>
+            <tr>
+                <th colspan="2">Special Column</th>
+            </tr>
+        </thead>
+    <tbody>
+        <tr>
+            <td><a href="go_index.md"> More Specific Go & Micro Services </a> </td>
+            <td><a href="AWS_index.md"> AWS SAA-C02 Notes </a> </td>
+        </tr>
+    </tbody>
+</table>
 
-[About Me](aboutme.md)  |    [Tags](tags.html)
-
-
-Special Column：
-
-[More Specific Go & Micro Services](go_index.md)
-
-[AWS SAA-C02 Notes](AWS_index.md)
-
-Reference Books:
-
-[On Java8 \<Mirror\>](OnJava8-main/README.md)
-
-</center>
+<div align="center">
+Reference Books: <a href="OnJava8-main/README.md">On Java8 (Mirror) </a>
+</div>
