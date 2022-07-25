@@ -1,7 +1,6 @@
 ---
 type: post
 title: Haskell dot&dollar Operators
-subtitle: `.` and `$`
 thumbnail-img: ""
 share-img: /assets/img/path.jpg
 tags: [Haskell, Funtional-Programming]
