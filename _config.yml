@@ -15,6 +15,7 @@ author: Mizumoto
 
 navbar-links:
   About Me: "aboutme"
+  To Eat: "ToEatList"
   Tags: "tags"
   Resources:
     - Akemimadoka's Home: "https://syaro.hotococoa.moe/wordpress/"
