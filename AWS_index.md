@@ -9,3 +9,5 @@ subtitle: AWS notes by M." B.U.T.A"O.
 [TODO](AWS/AWS_TODO.md)
 
 [Domains](AWS/AWS_domains.md)
+
+[IAM](_posts/2022-07-23-IAM-in-Depth.md)
