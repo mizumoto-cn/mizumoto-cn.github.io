@@ -33,3 +33,32 @@ Policies: See [AWS IAM Policies](https://docs.aws.amazon.com/IAM/latest/UserGuid
   - AWS joins all applicable policies
   - AWS-managed v.s. customer-managed
   - can control access based on tags
+- inline policy: only effective for specific roles
+- permission boundaries
+  - used to delegate(授权，把……委托给) admin to other users
+  - prevent privilege escalation(increase to counteract a perceived discrepancy) or unnecessary broad permissions
+  - control maximum permissions an IAM policy can grant
+- "owner" (in permission policy) refers to the identity and email address used to create the AWS account
+
+### Organization
+
+- paying account should be used for billing purposes only; do not deploy resources in paying account
+- enable/disable AWS services using Service Control Policies(SCP) either on OU (Organization Unit) or on individual accounts
+  - SCPs affect **only IAM** users and roles that are managed by accounts that are part of the organization (including the root user). SCPs don't affect resource-based policies directly. That also doesn't affect users or roles from accounts outside the organization.
+- RAM: Resource Access Manager
+  - can share AWS resources between accounts
+    - e.g. EC2, Aurora, Route 53, resource groups
+  - sharing must be enabled with the master account
+  - only resources owned by the account can be shared; cannot re-share resources owned by other accounts
+  - resource sharing can be done at an individual account if RAM is not enabled
+- SSO helps centrally manage access to AWS accounts
+  - exam tip: SAML in question -> SSO in answer
+
+### AWS Directory Service
+
+- a family of managed services heavily integrated with Microsoft Active Directory(AD)
+- connect AWS resources with on-premise AD //TODO
+- standalone directory in the cloud
+- use existing corporate credentials
+- enable SSO to any domain-joined EC2 instance
+- provides AD domain controllers(DCs) running 
