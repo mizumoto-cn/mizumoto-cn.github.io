@@ -62,3 +62,21 @@ Policies: See [AWS IAM Policies](https://docs.aws.amazon.com/IAM/latest/UserGuid
 - use existing corporate credentials
 - enable SSO to any domain-joined EC2 instance
 - provides AD domain controllers(DCs) running 
+  - reachable by applications in VPC
+  - extend existing AD to on-premises using AD Trust
+- **Simple AD**: standalone managed directory
+  - support Windows workloads that need basic AD features
+  - easier to manage EC2
+  - does not support trusts
+- **AD Connector**
+  - directory **gateway for on-premises AD**
+  - avoid caching information in the cloud
+    - if using with SSO, does not cache user information; only forwards to on-promise AD
+  - allow on-premise users to log in to AWS using AD
+    - join EC2 instances to the existing AD domain
+  - useful for on-premise applications
+  - scale across multiple AD Connector instances
+- Cloud Directory
+  - directory-based store for developers
+  - use cases: org charts
+  - fully managed service
