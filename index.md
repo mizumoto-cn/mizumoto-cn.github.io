@@ -6,28 +6,29 @@ subtitle: This is where I will tell my friends way too much about me
 
 <!-- markdownlint-disable MD033 -->
 
-<table align="center" width="100%">
+<table align="center">
         <thead>
             <tr>
-                <th colspan="2" align="center">Navigation</th>
+                <th colspan="3" align="center">Navigation</th>
             </tr>
     </thead>
     <tbody>
         <tr>
-            <td width="50%" align="center"><a href="aboutme"> About Me </a> </td>
-            <td width="50%" align="center"><a href="tags.html"> Tags </a> </td>
+            <td><a href="aboutme"> About Me </a> </td>
+            <td><a href="tags.html"> Tags </a> </td>
         </tr>
     </tbody>
     <!-- Add a column-->
     <thead>
             <tr>
-                <th colspan="2" align="center">Special Column</th>
+                <th colspan="3" align="center">Special Column</th>
             </tr>
         </thead>
     <tbody>
         <tr>
-            <td width="50%" align="center"><a href="go_index"> More Specific Go & Micro Services </a> </td>
-            <td width="50%" align="center"><a href="AWS_index"> AWS SAA-C02 Notes </a> </td>
+            <td><a href="go_index"> More Specific Go & Micro Services </a> </td>
+            <td><a href="AWS_index"> AWS SAA-C02 Notes </a> </td>
+            <td><a href="GCP_index"> GCP Notes </a> </td>
         </tr>
     </tbody>
 </table>
