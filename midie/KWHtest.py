@@ -5,7 +5,7 @@ import statsmodels.api as sm
 from matplotlib import pyplot as plt
 
 data = pd.read_csv("data.csv")
-print(data)
+# print(data)
 
 # DataFrame be like:
 #    \  Column  ...
@@ -29,7 +29,7 @@ data.fillna(0, inplace=True) # fill missing values with 0
 
 # you can tell the data frame to only use certain columns
 data = data[['group', 'CA']]
-print(data)
+# print(data)
 
 group = [[],[],[]]
 # divide CA column into three new series according to the id column
