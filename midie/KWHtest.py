@@ -91,7 +91,7 @@ data_square = np.array([group[0][:9] , group[1][:9] , group[2][:9]])
 # print(*data_array.T)
 
 # Conduct the Friedman Test
-stats.friedmanchisquare(*data_square.T)
+print(stats.friedmanchisquare(*data_square.T))
 
 # Nemenyi’s test 
 # !pip install command is only for kaggle module installation
@@ -99,4 +99,4 @@ stats.friedmanchisquare(*data_square.T)
 #!pip install scikit_posthocs
 import scikit_posthocs as sp
 
-sp.posthoc_nemenyi_friedman(data_square.T)
+print(sp.posthoc_nemenyi_friedman(data_square.T))
