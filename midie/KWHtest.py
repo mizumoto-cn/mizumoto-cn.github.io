@@ -38,51 +38,65 @@ for i in range (0, data['group'].size):
     if data['group'][i] == 1:
         group[0].append(data['CA'][i])
     elif data['group'][i] == 2:
-        group[1].append(data['CA'][i])
+        group[1].append(data['CA'][i]) 
     elif data['group'][i] == 3:
         group[2].append(data['CA'][i])
     else:
         print("Error: group id not found")
         
+print(group)
+
+# describeBy + summary
+for g in group:
+    group_data = Series(g)
+    print(group_data.describe())
+    print("")
+
+# Q-Q Graph
+import numpy as np 
+import pylab
+
 for i in range (0, len(group)):
-    print(Series(group[i]).describe())
-    data = sm.datasets.longley.load()
-    data.exog = sm.add_constant(data.exog)
-    model = sm.OLS(data.endog, data.exog)
-    mod_fit = model.fit()
-    res = mod_fit.resid # 获取了构造的模型的残差，获取了数据
-    # 主要调用方法
-    probplot = sm.ProbPlot(res) # 实例probplot
-    probplot.qqplot(line='s') # 调用函数
-    plt.show()
+    measurements = group[i]
+    stats.probplot(measurements, dist="norm", plot=pylab)
+    pylab.show()
+
+# Shapiro-Wilk test
+for i in range (0, len(group)):
+    print("Group", i + 1, ": ", stats.shapiro(group[i]))
     
-# count     9.000000
-# mean     37.777778
-# std       9.243616
-# min      30.000000
-# 25%      32.000000
-# 50%      34.000000
-# 75%      40.000000
-# max      58.000000
-# dtype: float64
+# Levene test for equal variances.(center = "mean")
 
-# count     11.000000
-# mean     377.727273
-# std       98.181557
-# min      263.000000
-# 25%      325.000000
-# 50%      367.000000
-# 75%      381.000000
-# max      579.000000
-# dtype: float64
+print("levene Test: ", stats.levene(group[0], group[1], group[2], center='mean'))
 
-# count      10.000000
-# mean      902.600000
-# std       153.857943
-# min       775.000000
-# 25%       796.750000
-# 50%       828.000000
-# 75%       957.500000
-# max      1230.000000
-# dtype: float64
+# Kruskal-Wallis H Test
 
+stat, p = stats.kruskal(group[0], group[1], group[2])
+print('stat=%f, p=%f' % (stat, p))
+# if you only need 3 digits after the decimal point
+# print('stat=%.3f, p=%.3f' % (stat, p))
+if p > 0.05:
+    print('不能拒绝原假设，样本集分布相同')
+else:
+    print('拒绝原假设，样本集分布可能不同')
+
+#  Friedman rank sum test. 反正都要用到矩阵的
+for g in group:
+    print(len(g))
+# not the same length
+# so only combine the first 9 elements into square
+data_square = np.array([group[0][:9] , group[1][:9] , group[2][:9]])
+
+# print(data_array)
+# print(*data_array.T)
+
+# Conduct the Friedman Test
+stats.friedmanchisquare(*data_square.T)
+
+# Nemenyi’s test 
+# !pip install command is only for kaggle module installation
+# remove it on your own computer
+#!pip install scikit_posthocs
+import scikit_posthocs as sp
+
+sp.posthoc_nemenyi_friedman(data_square.T)
