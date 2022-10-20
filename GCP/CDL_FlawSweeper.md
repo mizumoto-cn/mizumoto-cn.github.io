@@ -18,7 +18,7 @@ Apache Beam是一套用来编写数据处理任务的API，Beam旨在提供一�
 
 Dataproc 是一项托管式 Spark 和 Hadoop 服务
 
-Data Fusion:  build and manage ETL/ELT data pipelines. CDAP
+Data Fusion:  build and manage ETL/ELT data pipelines. CDAP. ETL（extract、transform、load，提取、转换、加载）
 
 What is GCP dataprep?
 Dataprep by Trifacta is an intelligent data service for visually exploring, cleaning, and preparing structured and unstructured data for analysis, reporting, and machine learning. Because Dataprep is serverless and works at any scale, there is no infrastructure to deploy or manage. Data prep - wrangle data based on tabular, interactive, visual structure.
@@ -219,3 +219,5 @@ Firebase v.s. CloudSQL
 * Since the systems already exist on-premise, it will take more effort to migrate them to an AppEngine architecture.
 
 -------------------------
+
+high capacity, performant, shared filesystem => Cloud Filestore
