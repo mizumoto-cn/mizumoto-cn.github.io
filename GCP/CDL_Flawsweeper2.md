@@ -162,6 +162,16 @@ One of your customers used to have a private data center.  While within their da
 
 * Writing a Cloud Function and analysing it in a database is unnecessary extra work.
 
+### Diff
+
+* Bigtable is the best suited for time series data. It also has high read-write throughput and ability to scale globally.
+
+* Firestore wouldn't have the scale or throughput that Bigtable has.
+
+* Cloud SQL is a regional service. The high read-write capacity requirement also might not be met by the Cloud SQL options.
+
+* Spanner, like the other Cloud SQL options, is a transactional database.  This requirement is better suited for a database that is optimized for time series data.
+
 -------------------------
 
 ## SLO SLA SLI
