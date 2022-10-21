@@ -9,7 +9,7 @@ subtitle: GCP CDL notes by M." B.U.T.A"O.
 - Practice on Examtopics
   - <https://www.examtopics.com/exams/google/cloud-digital-leader>
 - [Flaw Sweeper](./CDL_FlawSweeper.md)
-- [Flaw Sweeper - 2](./CDL_FlawSweeper2.md)
+- [Flaw Sweeper - 2](./CDL_Flawsweeper2.md)
 - [Flaw Sweeper - 3](./CDL_FlawSweeper3.md)
 
 ## Note
