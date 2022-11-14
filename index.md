@@ -15,7 +15,7 @@ subtitle: This is where I will tell my friends way too much about me
     <tbody>
         <tr>
             <td><a href="aboutme"> About Me </a> </td>
-            <td><a href="tags.html"> Tags </a> </td>
+            <td><a href="tags"> Tags </a> </td>
         </tr>
     </tbody>
     <!-- Add a column-->
@@ -33,6 +33,6 @@ subtitle: This is where I will tell my friends way too much about me
     </tbody>
 </table>
 
-<div align="center">
+<!-- div align="center">
 Reference Books: <a href="OnJava8-main/README">On Java8 (Mirror) </a>
-</div>
+</div-->
