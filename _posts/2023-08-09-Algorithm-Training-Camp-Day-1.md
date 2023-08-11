@@ -79,18 +79,18 @@ func binarySearch(nums []int, target int, left int, right int) int {
 
 ```go
 func search(nums []int, target int) int {
-	l, r := 0, len(nums)-1
-	for l <= r {
-		mid := l + (r-l)>>1 // avoid overflow
-		if nums[mid] == target {
-			return mid
-		} else if nums[mid] > target {
-			r = mid - 1 // mid is bigger than target, so r = mid - 1
-		} else {
-			l = mid + 1 // mid is smaller than target, so l = mid + 1
-		}
-	}
-	return -1
+    l, r := 0, len(nums)-1
+    for l <= r {
+        mid := l + (r-l)>>1 // avoid overflow
+        if nums[mid] == target {
+            return mid
+        } else if nums[mid] > target {
+            r = mid - 1 // mid is bigger than target, so r = mid - 1
+        } else {
+            l = mid + 1 // mid is smaller than target, so l = mid + 1
+        }
+    }
+    return -1
 }
 ```
 
@@ -106,14 +106,14 @@ func search(nums []int, target int) int {
 
 ```go
 func removeElement(nums []int, val int) int {
-	k := 0
-	for _, n := range nums {
-		if n != val {
-			nums[k] = n
-			k++
-		}
-	}
-	return k
+    k := 0
+    for _, n := range nums {
+        if n != val {
+            nums[k] = n
+            k++
+        }
+    }
+    return k
 }
 ```
 
@@ -136,6 +136,36 @@ func removeElement(nums []int, val int) int {
 | 35| [Search Insert Position](https://leetcode.com/problems/search-insert-position/) | [Go](https://github.com/mizumoto-cn/leetcode-go/blob/main/q35/ans.go) | Easy |
 | 69| [Sqrt(x)](https://leetcode.com/problems/sqrtx/) | [Go](https://github.com/mizumoto-cn/leetcode-go/blob/main/q69/ans.go) | Easy |
 |367| [Valid Perfect Square](https://leetcode.com/problems/valid-perfect-square/)|[Go](https://github.com/mizumoto-cn/leetcode-go/blob/main/q367/ans.go)|Easy|
+
+二分法核心在于两点：
+
+- 找到中值
+- 缩小查找范围
+
+上面的题目中间，平方根一题比较有趣。
+出去最基础的朴素二分法，还可以用牛顿法进行近似计算。
+不知道你们大学时候数学分析老师有没有教你们这些呢？
+
+```go
+// Newton's method: https://en.wikipedia.org/wiki/Integer_square_root#Algorithm_using_Newton's_method
+// One way of calculating √n and isqrt(n) is to use Heron's method, which is a special case of Newton's method,
+// to find a solution of the equation x^2 − n = 0, giving the iterative formula:
+// x[k+1] = (x[k] + n/x[k]) / 2 , k ≥ 0, x[0] > 0
+// The sequence x[k] converges quadratically to √n, as k → ∞.
+func mySqrt(x int) int {
+    // if x == 0 {
+    //     return 0
+    // }
+    if x == 1 {
+        return 1
+    }
+    mid := x >> 1
+    for mid*mid > x {
+        mid = (mid + x/mid) >> 1
+    }
+    return mid
+}
+```
 
 #### Two Pointers
 
