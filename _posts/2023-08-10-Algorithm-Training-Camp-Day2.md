@@ -247,4 +247,70 @@ func generateMatrix(n int) [][]int {
 > 和为`(n - l) * l`
 > 所以每圈的开始是`4* (n - l) * l + 1`
 
-最后leetcode的成绩是 0ms 2.1MB，时间复杂度是`O(n^2)`。
+最后leetcode的成绩是 0ms 2.1MB，时间复杂度是`O(n^2)`。击败百分百。
+
+但是呢，我们可以从另一方面切入，通过维护二维数组的坐标来生成螺旋矩阵。
+
+```go
+func generateMatrix(n int) [][]int {
+    func generateMatrix(n int) [][]int {
+    left := 0
+    right := n-1
+    top := 0
+    bot := n-1
+    answer := make([][]int, n)
+    k := 1
+    for i:=0;i<n;i++{
+        answer[i] = make([]int, n)
+    }
+    for left<right && top<bot{
+        i := left
+        for i < right{
+            answer[top][i] = k
+            i++
+            k++
+        }
+        i = top
+        for i < bot{
+            answer[i][right]= k
+            i++
+            k++
+        }
+        i = right
+        for i > left{
+            answer[bot][i]  = k
+            i--
+            k++
+        }
+        i = bot
+        for i > top{
+            answer[i][left] = k
+            i--
+            k++
+        }
+        left++
+        right--
+        top++
+        bot--
+    }
+
+    if left == right{
+        i := top
+        for i <= bot{
+            answer[i][left] = k
+            i++
+            k++
+        }
+    }else if top == bot{
+        i := left
+        for i <= right{
+            answer[top][i] = k
+            i++
+            k++
+        }
+    }
+    return answer
+}
+```
+
+但是这样就很蠢！写很久
