@@ -1,4 +1,11 @@
-# Algorithm Training Camp Day 1
+---
+layout: post
+title: Algorithm Training Camp Day 1
+subtitle: Array - Binary Search and Two Pointers
+thumbnail-img: ""
+share-img: 
+tags: [Algorithm, LeetCode, Go]
+---
 
 > 2023-08-09
 
