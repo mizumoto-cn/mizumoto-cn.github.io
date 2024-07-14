@@ -29,7 +29,7 @@ subtitle: This is where I will tell my friends way too much about me
             <td><a href="go_index"> More Specific Go & Micro Services </a> </td>
             <td><a href="AWS_index"> AWS SAA-C02 Notes </a> </td>
             <td><a href="GCP_index"> GCP Notes </a> </td>
-            <td><a href="backend_interview"> Interview </a> </td>
+            <td><a href="backend_interview/directory"> Interview </a> </td>
         </tr>
     </tbody>
 </table>
